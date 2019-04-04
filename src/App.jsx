@@ -7,7 +7,7 @@ const App = () => {
   return (
     <div className="app">
       <div className="app--name" id="app--name">
-        <p>SoundReact</p>
+        <p>SoundReact hello</p>
         <svg className="app__name--svg" id="app__name--svg">
           <use xlinkHref="./img/sprite.svg#icon-react" />
         </svg>
