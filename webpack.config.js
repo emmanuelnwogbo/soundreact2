@@ -1,0 +1,68 @@
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+module.exports = {
+  entry: ["babel-polyfill", "./src/index.js"],
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "js/bundle.js"
+  },
+  devServer: {
+    publicPath: "/",
+    contentBase: "./src"
+  },
+  resolve: {
+    extensions: ["*", ".js", ".jsx"]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: "index.html",
+      template: "./src/index.html"
+    })
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        }
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: "style-loader"
+          },
+          {
+            loader: "css-loader"
+          },
+          {
+            loader: "sass-loader"
+          }
+        ]
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          {
+            loader: "file-loader"
+          },
+          {
+            loader: "svg-sprite-loader"
+          }
+        ]
+      },
+      {
+        test: /\.(html)$/,
+        use: {
+          loader: "html-loader",
+          options: {
+            attrs: [":data-src", "img:src", "link:href", "use:xlink:href"]
+          }
+        }
+      }
+    ]
+  }
+};

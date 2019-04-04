@@ -1,0 +1,30 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  background-image: linear-gradient(
+    to right bottom,
+    rgb(23, 32, 42),
+    rgba(33, 33, 33, 1)
+  );
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  min-height: 100vh;
+  padding: 0 2rem;
+  position: relative;
+}
+
+#main {
+  height: 100vh;
+}
