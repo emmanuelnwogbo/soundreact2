@@ -2,14 +2,15 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: ["babel-polyfill", "./src/index.js"],
+  entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "js/bundle.js"
-    //publicPath: "/"
+    filename: "js/bundle.js",
+    publicPath: "/"
   },
   devServer: {
-    contentBase: "./src"
+    contentBase: "./src",
+    port: 3030
   },
   resolve: {
     extensions: ["*", ".js", ".jsx"]
@@ -45,14 +46,7 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: [
-          {
-            loader: "file-loader"
-          },
-          {
-            loader: "svg-sprite-loader"
-          }
-        ]
+        use: ["file-loader"]
       },
       {
         test: /\.(html)$/,
