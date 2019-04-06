@@ -21,6 +21,9 @@ class SearchBar extends React.Component {
           .getElementById("search")
           .addEventListener("keypress", function(e) {
             if (e.key === "Enter") {
+              if (window.matchMedia("(max-width: 1024px)").matches) {
+                document.getElementById("app--name").style.display = `none`;
+              }
               document.getElementById(
                 "searchbar"
               ).style.transform = `translateY(2rem)`;
