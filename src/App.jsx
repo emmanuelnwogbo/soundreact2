@@ -2,6 +2,7 @@ import React from "react";
 
 import PlayerBar from "./components/PlayerBar";
 import SearchBar from "./components/SearchBar";
+console.log(SearchBar);
 
 const App = () => {
   return (
