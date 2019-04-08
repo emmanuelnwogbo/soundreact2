@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://emmanuelnwogbo.github.io/soundreact2",
+  "homepage": "https://github.com/emmanuelnwogbo/soundreact2#readme",
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack --mode development",
-    "start": "webpack-dev-server --mode development --open"
+    "start": "webpack-dev-server --mode development --open",
+    "deploy": "gh-pages -b master -d build"
   },
   "repository": {
     "type": "git",
@@ -18,10 +19,10 @@
   "bugs": {
     "url": "https://github.com/emmanuelnwogbo/soundreact2/issues"
   },
-  "homepage": "https://github.com/emmanuelnwogbo/soundreact2#readme",
   "dependencies": {
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
+    "gh-pages": "^2.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
