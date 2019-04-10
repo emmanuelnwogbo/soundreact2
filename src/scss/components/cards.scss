@@ -1,0 +1,10 @@
+.cards {
+  margin-top: 13rem;
+  min-height: 100vh;
+  display: grid;
+  position: absolute;
+  padding: 0 25.5rem;
+  background: rebeccapurple;
+  grid-template-columns: repeat(60, 1fr);
+  grid-template-rows: repeat(60, 1fr);
+}
