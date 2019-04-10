@@ -8,10 +8,53 @@ const ImgFrame = ({ source }) => {
   );
 };
 
-const Banner = ({ imgs }) => {
+const Details = ({ details }) => {
+  let genreKeys = 0;
+  return (
+    <div className="banner--details">
+      <div className="banner--details-section banner--details-name">
+        <div>
+          <p>{details.name}</p>
+        </div>
+      </div>
+      <div className="banner--details-section">
+        <div>
+          <p>Followers:</p>
+        </div>
+        <div>
+          <p>{details.followers.total}</p>
+        </div>
+      </div>
+      <div className="banner--details-section">
+        <div>
+          <p>Genres:</p>
+        </div>
+        <div>
+          {details.genres.map(genre => {
+            return (
+              <p className="banner--details-genres" key={(genreKeys += 1)}>
+                {genre}
+              </p>
+            );
+          })}
+        </div>
+      </div>
+      <div className="banner--details-section banner--details-btn">
+        <span>
+          <a className="link" href={details.external_urls.spotify}>
+            view Spotify page
+          </a>
+        </span>
+      </div>
+    </div>
+  );
+};
+
+const Banner = ({ imgs, ArtistDetails }) => {
   return (
     <div className="banner">
       <ImgFrame source={`${imgs[0].url}`} />
+      <Details details={ArtistDetails} />
     </div>
   );
 };

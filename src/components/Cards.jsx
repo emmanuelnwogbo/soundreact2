@@ -10,7 +10,12 @@ class Cards extends React.Component {
 
   renderSideImages() {
     if (this.props.artist) {
-      return <Banner imgs={this.props.artist.images} />;
+      return (
+        <Banner
+          imgs={this.props.artist.images}
+          ArtistDetails={this.props.artist}
+        />
+      );
     }
     return;
   }

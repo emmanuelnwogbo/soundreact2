@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: inherit;
+  text-decoration: none;
 }
 
 html {
@@ -44,6 +45,13 @@ body {
   position: relative;
 }
 
-#main {
-  //height: 100vh;
+.link {
+  color: #fff;
+  font-weight: 700;
+
+  &:focus {
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+  }
 }

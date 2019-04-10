@@ -30,6 +30,7 @@ class SearchBar extends React.Component {
       "searchbar"
     ).style.transform = `translateX(24rem) translateY(2rem)`;
     document.getElementById("cards").style.position = `relative`;
+    document.getElementById("cards").style.zIndex = `1000`;
     document.getElementById("searchbar").style.position = `fixed`;
     document.getElementById("app--name").style.top = `3%`;
     document.getElementById("app--name").style.left = `3%`;
