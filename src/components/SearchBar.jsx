@@ -16,7 +16,8 @@ class SearchBar extends React.Component {
   constructor() {
     super();
     this.state = {
-      focused: false
+      focused: false,
+      artistId: false
     };
     this.focus = this.focus.bind(this);
     this.searchTerm = null;
@@ -64,8 +65,37 @@ class SearchBar extends React.Component {
                       res.data.artists.items.length &&
                       res.data.artists.items.length > 0
                     ) {
-                      console.log(res);
-                      this.props.getSideGridPhotosProp(res.data.artists.items);
+                      const artistsDetails = res.data.artists;
+                      //console.log("hello artists", artistsDetails);
+                      this.setState(
+                        prevState => {
+                          return {
+                            artistId: res.data.artists.items[0].id
+                          };
+                        },
+                        () => {
+                          axios
+                            .get(
+                              `https://spotify-api-wrapper.appspot.com/artist/${
+                                this.state.artistId
+                              }/top-tracks`
+                            )
+                            .then(res => {
+                              const artistTopTracks = res.data.tracks;
+                              /*console.log(
+                                "heello artists top-tracks",
+                                artistTopTracks
+                              );*/
+                              this.props.getSideGridPhotosProp(
+                                artistsDetails.items,
+                                artistTopTracks
+                              );
+                            })
+                            .catch(err => {
+                              console.log(err);
+                            });
+                        }
+                      );
                     } else {
                       console.log(`this is not existing ${res}`);
                     }
@@ -89,6 +119,7 @@ class SearchBar extends React.Component {
           type="text"
           id="search"
           name="search"
+          placeholder="Find an artist"
           onClick={this.focus}
         />
       </div>

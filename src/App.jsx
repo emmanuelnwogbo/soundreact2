@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 
 import SearchBar from "./components/SearchBar";
 import Cards from "./components/Cards";
@@ -8,16 +7,17 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      artist: false
+      artist: false,
+      topTracks: false
     };
     this.getSideGridPhotos = this.getSideGridPhotos.bind(this);
   }
 
-  getSideGridPhotos(artist) {
-    console.log(artist);
+  getSideGridPhotos(artist, topTracks) {
     this.setState(prevState => {
       return {
-        artist: artist[0]
+        artist: artist[0],
+        topTracks
       };
     });
   }
@@ -41,7 +41,7 @@ class App extends React.Component {
           </svg>
         </div>
         <SearchBar getSideGridPhotosProp={this.getSideGridPhotos} />
-        <Cards artist={this.state.artist} />
+        <Cards artist={this.state.artist} topTracks={this.state.topTracks} />
       </div>
     );
   }

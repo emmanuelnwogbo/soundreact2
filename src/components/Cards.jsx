@@ -10,6 +10,7 @@ class Cards extends React.Component {
 
   renderSideImages() {
     if (this.props.artist) {
+      console.log(this.props.topTracks);
       return (
         <Banner
           imgs={this.props.artist.images}
