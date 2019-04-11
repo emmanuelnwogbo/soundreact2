@@ -41,7 +41,11 @@ const Details = ({ details }) => {
       </div>
       <div className="banner--details-section banner--details-btn">
         <span>
-          <a className="link" href={details.external_urls.spotify}>
+          <a
+            className="link"
+            href={details.external_urls.spotify}
+            target="_blank"
+          >
             view Spotify page
           </a>
         </span>
