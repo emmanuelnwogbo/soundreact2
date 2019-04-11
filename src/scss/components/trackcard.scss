@@ -3,6 +3,7 @@
   border-radius: 0.3rem;
   overflow: hidden;
   border-radius: 0.3rem;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
 
   &--fig {
     position: absolute;
@@ -63,15 +64,37 @@
   &--btn {
     padding: 0.9rem;
     position: relative;
+    width: fit-content;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
 
     &::before {
       position: absolute;
       content: "";
-      bottom: 18%;
-      left: 5%;
-      width: 20%;
+      bottom: 15%;
+      left: 13%;
+      width: 82%;
       height: 0.3rem;
       background: #fff;
+      opacity: 0.8;
     }
+  }
+
+  &--playpause {
+    position: absolute;
+    top: 37%;
+    left: 0;
+    width: 100%;
+    z-index: 5000;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+  }
+
+  &--play {
+    fill: #fff;
+    opacity: 0.8;
+    height: 10rem;
+    width: 10rem;
+    cursor: pointer;
   }
 }

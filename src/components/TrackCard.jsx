@@ -7,11 +7,15 @@ class TrackCard extends React.Component {
   }
 
   render() {
-    //console.log(this.props.track);
     let track = this.props.track;
     console.log(track);
     return (
       <div className="trackcard">
+        <div className="trackcard--playpause">
+          <svg className="trackcard--play" id="app__name--svg">
+            <use xlinkHref="./img/sprite.svg#icon-play2" />
+          </svg>
+        </div>
         <figure className="trackcard--fig">
           <img className="trackcard--img" src={track.album.images[0].url} />
         </figure>
