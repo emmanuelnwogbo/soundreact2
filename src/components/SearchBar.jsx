@@ -1,16 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-/*axios
-  .get(
-    `https://spotify-api-wrapper.appspot.com/artist/0du5cEVh5yTK9QJze8zA0C/top-tracks`
-  )
-  .then(res => {
-    console.log(res);
-  })
-  .catch(err => {
-    console.log(err);
-  });*/
+import Global from "../global";
 
 class SearchBar extends React.Component {
   constructor() {
@@ -24,6 +15,7 @@ class SearchBar extends React.Component {
   }
 
   focus() {
+    window.removeEventListener("keypress", Global.pausePlayMusic, false);
     if (window.matchMedia("(max-width: 1024px)").matches) {
       document.getElementById("app--name").style.display = `none`;
     }
@@ -54,6 +46,7 @@ class SearchBar extends React.Component {
                 };
               },
               () => {
+                e.target.value = "";
                 axios
                   .get(
                     `https://spotify-api-wrapper.appspot.com/artist/${

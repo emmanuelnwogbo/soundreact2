@@ -97,4 +97,12 @@
     width: 10rem;
     cursor: pointer;
   }
+
+  &--loading {
+    transition: all 1s ease-out;
+    animation: loadingSpinner 1s linear 0.1s infinite;
+    animationfillmode: backwards;
+    transform: scale(0.7);
+    fill: #000000;
+  }
 }
