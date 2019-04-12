@@ -29,7 +29,7 @@ class App extends React.Component {
           style={{
             width: "100%",
             height: "9vh",
-            background: "rgb(23, 32, 42)",
+            background: "#000000",
             position: "fixed",
             zIndex: "3000"
           }}
