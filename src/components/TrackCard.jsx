@@ -120,6 +120,16 @@ class TrackCard extends React.Component {
 
   render() {
     let track = this.props.track;
+    let date = track.album.release_date;
+    let dateArr = date.split("");
+    let formatedDateArr = dateArr.map(item => {
+      if (item === "-") {
+        return "/";
+      }
+      return item;
+    });
+    let stringformatedDateArr = formatedDateArr.toString();
+    let finalDate = stringformatedDateArr.replace(/\,/g, "");
     return (
       <div className="trackcard">
         <Audio url={track.preview_url} id={track.id} />
@@ -135,7 +145,7 @@ class TrackCard extends React.Component {
             <p>{track.album.album_type}</p>
           </div>
           <div className="trackcard--text">
-            <p>{track.album.release_date}</p>
+            <p>{finalDate}</p>
           </div>
           <div className="trackcard--artists">
             {track.album.artists.map(artist => {

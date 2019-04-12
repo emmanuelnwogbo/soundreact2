@@ -10,6 +10,8 @@ const ImgFrame = ({ source }) => {
 
 const Details = ({ details }) => {
   let genreKeys = 0;
+  let followers = details.followers.total;
+  let followersFormated = String(followers).replace(/(.)(?=(\d{3})+$)/g, "$1,");
   return (
     <div className="banner--details">
       <div className="banner--details-section banner--details-name">
@@ -22,7 +24,7 @@ const Details = ({ details }) => {
           <p>Followers:</p>
         </div>
         <div>
-          <p>{details.followers.total}</p>
+          <p>{followersFormated}</p>
         </div>
       </div>
       <div className="banner--details-section">
