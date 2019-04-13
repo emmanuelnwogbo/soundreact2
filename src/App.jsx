@@ -31,7 +31,9 @@ class App extends React.Component {
             height: "9vh",
             background: "#000000",
             position: "fixed",
-            zIndex: "3000"
+            zIndex: "3000",
+            top: "0",
+            left: "0"
           }}
         />
         <div className="app--name" id="app--name">

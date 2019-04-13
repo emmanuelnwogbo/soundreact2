@@ -1,0 +1,49 @@
+@mixin trackCardBackground($background) {
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: $background;
+    opacity: 0.5;
+    content: "";
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+  }
+}
+
+@mixin applyTrackCardBackgrounds {
+  @for $i from 1 through 8 {
+    &:nth-child(1) {
+      @include trackCardBackground(RGB(255, 160, 122));
+    }
+
+    &:nth-child(2) {
+      @include trackCardBackground(rgba(87, 75, 144, 1));
+    }
+
+    &:nth-child(3) {
+      @include trackCardBackground(rgba(196, 69, 105, 1));
+    }
+
+    &:nth-child(4) {
+      @include trackCardBackground(RGB(240, 128, 128));
+    }
+
+    &:nth-child(5) {
+      @include trackCardBackground(rgba(232, 67, 147, 1));
+    }
+
+    &:nth-child(6) {
+      @include trackCardBackground(rgba(24, 220, 255, 1));
+    }
+
+    &:nth-child(7) {
+      @include trackCardBackground(rgba(255, 56, 56, 1));
+    }
+
+    &:nth-child(8) {
+      @include trackCardBackground(rgba(255, 204, 204, 1));
+    }
+  }
+}

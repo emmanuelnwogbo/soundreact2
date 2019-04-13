@@ -21,7 +21,7 @@ class SearchBar extends React.Component {
     }
     document.getElementById(
       "searchbar"
-    ).style.transform = `translateX(24rem) translateY(2rem)`;
+    ).style.transform = `translateX(24rem) translateY(-11rem)`;
     document.getElementById("cards").style.display = `grid`;
     document.getElementById("cards").style.position = `relative`;
     document.getElementById("cards").style.zIndex = `1000`;

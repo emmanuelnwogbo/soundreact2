@@ -5,9 +5,22 @@
   padding: 0 25.5rem;
   grid-template-columns: repeat(60, 1fr);
   grid-template-rows: repeat(60, 1vw);
+  grid-auto-rows: 1vw;
   z-index: -1;
+  &::before {
+    position: absolute;
+    content: "";
+    bottom: -70%;
+    left: 0;
+    background-image: linear-gradient(to right bottom, #070707, #070707);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+  }
 
-  & .trackcard:nth-child(2) {
+  & .banner--trackcard:nth-child(2) {
     grid-column: 31 / 57;
     grid-row: 1 / 18;
 
@@ -24,7 +37,7 @@
     }
   }
 
-  & .trackcard:nth-child(3) {
+  & .banner--trackcard:nth-child(3) {
     grid-column: 31 / 57;
     grid-row: 19 / 36;
 

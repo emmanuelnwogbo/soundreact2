@@ -1,0 +1,24 @@
+.othercards {
+  grid-row: 37 / -1;
+  grid-column: 1 / 57;
+  border-radius: 0.3rem;
+  display: grid;
+  grid-template-columns: repeat(60, 1fr);
+  grid-template-rows: repeat(60, 1vw);
+  grid-auto-rows: 1vw;
+  grid-gap: 1.2rem;
+  justify-content: center;
+
+  &--trackcard:nth-child(1) {
+    grid-column: span 40;
+  }
+
+  &--trackcard {
+    @include applyTrackCardBackgrounds;
+  }
+
+  &--trackcard {
+    grid-row: span 11;
+    grid-column: span 20;
+  }
+}

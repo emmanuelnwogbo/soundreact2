@@ -131,7 +131,7 @@ class TrackCard extends React.Component {
     let stringformatedDateArr = formatedDateArr.toString();
     let finalDate = stringformatedDateArr.replace(/\,/g, "");
     return (
-      <div className="trackcard">
+      <div className={this.props.classes}>
         <Audio url={track.preview_url} id={track.id} />
         <div className="trackcard--playpause">{this.playPauseBtn()}</div>
         <figure className="trackcard--fig">
