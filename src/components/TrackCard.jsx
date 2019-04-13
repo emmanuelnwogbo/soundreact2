@@ -130,10 +130,18 @@ class TrackCard extends React.Component {
     });
     let stringformatedDateArr = formatedDateArr.toString();
     let finalDate = stringformatedDateArr.replace(/\,/g, "");
+
+    const renderBtn = () => {
+      if (track.preview_url === null) {
+        return;
+      } else {
+        return this.playPauseBtn();
+      }
+    };
     return (
       <div className={this.props.classes}>
         <Audio url={track.preview_url} id={track.id} />
-        <div className="trackcard--playpause">{this.playPauseBtn()}</div>
+        <div className="trackcard--playpause">{renderBtn()}</div>
         <figure className="trackcard--fig">
           <img className="trackcard--img" src={track.album.images[0].url} />
         </figure>

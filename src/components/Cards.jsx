@@ -7,9 +7,13 @@ import OtherCards from "./OtherCards";
 class Cards extends React.Component {
   constructor() {
     super();
+    this.state = {
+      population: false
+    }
     this.renderSideImages = this.renderSideImages.bind(this);
     this.renderTrackCards = this.renderTrackCards.bind(this);
     this.renderOtherCards = this.renderOtherCards.bind(this);
+    this.populateCard = this.populateCard.bind(this);
   }
 
   renderSideImages() {
@@ -57,12 +61,27 @@ class Cards extends React.Component {
     }
   }
 
-  render() {
+  populateCard() {
+    if (!this.props.searchTriggered) {
+      return (
+        <div className="cards" id="cards">
+          {this.renderSideImages()}
+          {this.renderTrackCards()}
+          <OtherCards renderCards={this.renderOtherCards} />
+        </div>
+      )
+    }
     return (
       <div className="cards" id="cards">
-        {this.renderSideImages()}
-        {this.renderTrackCards()}
-        <OtherCards renderCards={this.renderOtherCards} />
+
+      </div>
+    )
+  }
+
+  render() {
+    return (
+      <div>
+        {this.populateCard()}
       </div>
     );
   }

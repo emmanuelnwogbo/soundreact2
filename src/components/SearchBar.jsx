@@ -40,6 +40,11 @@ class SearchBar extends React.Component {
       () => {
         document.getElementById("search").addEventListener("keypress", e => {
           if (e.key === "Enter") {
+
+            this.props.therewasaproblem.style.display = `none`
+            this.props.notfound.style.display = `none`
+            this.props.searchTrigger();
+            this.props.loadingAnime.style.display = `block`
             this.setState(
               prevState => {
                 return {
@@ -55,12 +60,15 @@ class SearchBar extends React.Component {
                     }`
                   )
                   .then(res => {
+                    //console.log(res)
                     if (
                       res.data.artists.items.length &&
                       res.data.artists.items.length > 0
                     ) {
+                      this.props.loadingAnime.style.display = `none`
+                      this.props.therewasaproblem.style.display = `none`
+                      this.props.searchUnTrigger();
                       const artistsDetails = res.data.artists;
-                      //console.log("hello artists", artistsDetails);
                       this.setState(
                         prevState => {
                           return {
@@ -76,10 +84,6 @@ class SearchBar extends React.Component {
                             )
                             .then(res => {
                               const artistTopTracks = res.data.tracks;
-                              /*console.log(
-                                "heello artists top-tracks",
-                                artistTopTracks
-                              );*/
                               this.props.getSideGridPhotosProp(
                                 artistsDetails.items,
                                 artistTopTracks
@@ -91,11 +95,16 @@ class SearchBar extends React.Component {
                         }
                       );
                     } else {
-                      console.log(`this is not existing ${res}`);
+                      this.props.loadingAnime.style.display = `none`
+                      this.props.notfound.style.display = `block`
                     }
                   })
-                  .catch(err => {
-                    console.log(err);
+                  .catch((res, err) => {
+                    //console.log(err);
+                    this.props.loadingAnime.style.display = `none`
+                    if (!res) {
+                      this.props.therewasaproblem.style.display = `block`
+                    }
                   });
               }
             );

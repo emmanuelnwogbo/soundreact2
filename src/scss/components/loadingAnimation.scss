@@ -1,0 +1,21 @@
+.loadingAnimation {
+  position: absolute;
+  width: 100%;
+  z-index: 9800;
+  top: 30vh;
+  left: 0;
+  display: none;
+
+  &--circle {
+    margin: 0 auto;
+    width: 12rem;
+    height: 12rem;
+    border-radius: 50%;
+    border: 0.6rem solid;
+    border-color: #fff #fff
+      rgba(111, 30, 81, 0.2) #fff;
+    transition: all 0.5s ease-in;
+    background: transparent;
+    animation: spinThree 1s linear 1s infinite;
+  }
+}

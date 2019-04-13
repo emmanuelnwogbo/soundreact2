@@ -1,0 +1,15 @@
+.therewasaproblem {
+  position: absolute;
+  width: 100%;
+  z-index: 9800;
+  top: 30vh;
+  left: 0;
+  display: none;
+  &--text {
+    margin: 0 auto;
+    text-align: center;
+    width: 50%;
+    color: #fff;
+    font-size: 4rem;
+  }
+}

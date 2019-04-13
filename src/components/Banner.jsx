@@ -57,12 +57,19 @@ const Details = ({ details }) => {
 };
 
 const Banner = ({ imgs, ArtistDetails }) => {
+  if (imgs[0]) {
+    return (
+      <div className="banner">
+        <ImgFrame source={`${imgs[0].url}`} />
+        <Details details={ArtistDetails} />
+      </div>
+    );
+  }
   return (
     <div className="banner">
-      <ImgFrame source={`${imgs[0].url}`} />
       <Details details={ArtistDetails} />
     </div>
-  );
+  )
 };
 
 export default Banner;

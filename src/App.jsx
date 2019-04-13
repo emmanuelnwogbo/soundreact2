@@ -8,9 +8,31 @@ class App extends React.Component {
     super();
     this.state = {
       artist: false,
-      topTracks: false
+      topTracks: false,
+      loadingAnimation: false,
+      notFound: false,
+      searchTriggered: false,
+      thereWasaProblem: false,
     };
     this.getSideGridPhotos = this.getSideGridPhotos.bind(this);
+    this.triggerSearch = this.triggerSearch.bind(this);
+    this.untriggerSearch = this.untriggerSearch.bind(this);
+  }
+
+  triggerSearch() {
+    this.setState(prevState => {
+      return {
+        searchTriggered: true
+      }
+    })
+  }
+
+  untriggerSearch() {
+    this.setState(prevState => {
+      return {
+        searchTriggered: false
+      }
+    })
   }
 
   getSideGridPhotos(artist, topTracks) {
@@ -20,6 +42,16 @@ class App extends React.Component {
         topTracks
       };
     });
+  }
+
+  componentDidMount() {
+    this.setState(prevState => {
+      return {
+        loadingAnimation: document.getElementById('loadingAnimation'),
+        notFound: document.getElementById('notfound'),
+        thereWasaProblem: document.getElementById('therewasaproblem'),
+      }
+    })
   }
 
   render() {
@@ -36,14 +68,28 @@ class App extends React.Component {
             left: "0"
           }}
         />
+        <div className="loadingAnimation" id="loadingAnimation">
+          <div className="loadingAnimation--circle" />
+        </div>
+        <div className="notfound" id="notfound">
+          <div className="notfound--text">
+            <p>No Results Found</p>
+          </div>
+        </div>
+        <div className="therewasaproblem" id="therewasaproblem">
+          <div className="therewasaproblem--text">
+            <p>Oops, There was a Problem</p>
+            <p>Please retry your search again</p>
+          </div>
+        </div>
         <div className="app--name" id="app--name">
           <p>SoundReact</p>
           <svg className="app__name--svg" id="app__name--svg">
             <use xlinkHref="./img/sprite.svg#icon-react" />
           </svg>
         </div>
-        <SearchBar getSideGridPhotosProp={this.getSideGridPhotos} />
-        <Cards artist={this.state.artist} topTracks={this.state.topTracks} />
+        <SearchBar searchUnTrigger={this.untriggerSearch} searchTrigger={this.triggerSearch} loadingAnime={this.state.loadingAnimation} notfound={this.state.notFound} therewasaproblem={this.state.thereWasaProblem} getSideGridPhotosProp={this.getSideGridPhotos} />
+        <Cards searchTriggered={this.state.searchTriggered} artist={this.state.artist} topTracks={this.state.topTracks} />
       </div>
     );
   }
