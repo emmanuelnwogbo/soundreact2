@@ -27,7 +27,8 @@ const Global = {
         });
       }
     }
-  }
+  },
+  opacity: '.5'
 };
 
 export default Global;

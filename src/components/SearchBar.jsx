@@ -40,7 +40,7 @@ class SearchBar extends React.Component {
       () => {
         document.getElementById("search").addEventListener("keypress", e => {
           if (e.key === "Enter") {
-
+            Global.opacity = '.5'
             this.props.therewasaproblem.style.display = `none`
             this.props.notfound.style.display = `none`
             this.props.searchTrigger();
@@ -88,6 +88,7 @@ class SearchBar extends React.Component {
                                 artistsDetails.items,
                                 artistTopTracks
                               );
+                              Global.opacity = '1'
                             })
                             .catch(err => {
                               console.log(err);

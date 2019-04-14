@@ -83,7 +83,7 @@ class Cards extends React.Component {
       <div>
         {this.populateCard()}
       </div>
-    );
+    )
   }
 }
 

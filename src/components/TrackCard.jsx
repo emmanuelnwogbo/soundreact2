@@ -9,10 +9,13 @@ class TrackCard extends React.Component {
     this.state = {
       playing: false,
       loading: false,
-      track: false
+      track: false,
+      opacity: '.5'
     };
     this.playPauseTrack = this.playPauseTrack.bind(this);
     this.playPauseBtn = this.playPauseBtn.bind(this);
+    this.lazyLoadImgs = this.lazyLoadImgs.bind(this);
+    this.lazyLoadCard = this.lazyLoadCard.bind(this);
   }
 
   playPauseTrack(e) {
@@ -110,41 +113,30 @@ class TrackCard extends React.Component {
     }
   }
 
-  componentDidMount() {
-    this.setState(prevState => {
-      return {
-        track: document.getElementById(this.props.track.id)
-      };
-    });
+  lazyLoadImgs(url) {
+    const img = new Image();
+    img.src = `${url}`
+    img.onload = () => {
+      this.setState(prevState => {
+        return {
+          opacity: '1'
+        }
+      })
+    }
+    if (this.state.opacity === '1') {
+      return (
+        <figure className="trackcard--fig">
+          <img className="trackcard--img" src={url} />
+        </figure>
+      );
+    }
+
+    return;
   }
 
-  render() {
-    let track = this.props.track;
-    let date = track.album.release_date;
-    let dateArr = date.split("");
-    let formatedDateArr = dateArr.map(item => {
-      if (item === "-") {
-        return "/";
-      }
-      return item;
-    });
-    let stringformatedDateArr = formatedDateArr.toString();
-    let finalDate = stringformatedDateArr.replace(/\,/g, "");
-
-    const renderBtn = () => {
-      if (track.preview_url === null) {
-        return;
-      } else {
-        return this.playPauseBtn();
-      }
-    };
-    return (
-      <div className={this.props.classes}>
-        <Audio url={track.preview_url} id={track.id} />
-        <div className="trackcard--playpause">{renderBtn()}</div>
-        <figure className="trackcard--fig">
-          <img className="trackcard--img" src={track.album.images[0].url} />
-        </figure>
+  lazyLoadCard(track, finalDate) {
+    if (Global.opacity === '1') {
+      return (
         <div className="trackcard--details">
           <div className="trackcard--text">
             <p>{track.album.name}</p>
@@ -180,6 +172,48 @@ class TrackCard extends React.Component {
             </a>
           </div>
         </div>
+      )
+    }
+    return;
+  }
+
+  componentDidMount() {
+    this.setState(prevState => {
+      return {
+        track: document.getElementById(this.props.track.id),
+        opacity: '.5'
+      };
+    });
+  }
+
+  render() {
+    let track = this.props.track;
+    let date = track.album.release_date;
+    let dateArr = date.split("");
+    let formatedDateArr = dateArr.map(item => {
+      if (item === "-") {
+        return "/";
+      }
+      return item;
+    });
+    let stringformatedDateArr = formatedDateArr.toString();
+    let finalDate = stringformatedDateArr.replace(/\,/g, "");
+
+    const renderBtn = () => {
+      if (track.preview_url === null) {
+        return;
+      } else {
+        return this.playPauseBtn();
+      }
+    };
+    return (
+      <div className={this.props.classes} style={{
+          opacity: Global.opacity
+        }}>
+        <Audio url={track.preview_url} id={track.id} />
+        <div className="trackcard--playpause">{renderBtn()}</div>
+        {this.lazyLoadImgs(track.album.images[1].url)}
+        {this.lazyLoadCard(track, finalDate)}
       </div>
     );
   }

@@ -12,7 +12,7 @@ class App extends React.Component {
       loadingAnimation: false,
       notFound: false,
       searchTriggered: false,
-      thereWasaProblem: false,
+      thereWasaProblem: false
     };
     this.getSideGridPhotos = this.getSideGridPhotos.bind(this);
     this.triggerSearch = this.triggerSearch.bind(this);
@@ -88,8 +88,15 @@ class App extends React.Component {
             <use xlinkHref="./img/sprite.svg#icon-react" />
           </svg>
         </div>
-        <SearchBar searchUnTrigger={this.untriggerSearch} searchTrigger={this.triggerSearch} loadingAnime={this.state.loadingAnimation} notfound={this.state.notFound} therewasaproblem={this.state.thereWasaProblem} getSideGridPhotosProp={this.getSideGridPhotos} />
-        <Cards searchTriggered={this.state.searchTriggered} artist={this.state.artist} topTracks={this.state.topTracks} />
+        <SearchBar searchUnTrigger={this.untriggerSearch}
+          searchTrigger={this.triggerSearch}
+          loadingAnime={this.state.loadingAnimation}
+          notfound={this.state.notFound}
+          therewasaproblem={this.state.thereWasaProblem}
+          getSideGridPhotosProp={this.getSideGridPhotos} />
+        <Cards searchTriggered={this.state.searchTriggered}
+          artist={this.state.artist}
+          topTracks={this.state.topTracks} />
       </div>
     );
   }

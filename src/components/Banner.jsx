@@ -2,9 +2,7 @@ import React from "react";
 
 const ImgFrame = ({ source }) => {
   return (
-    <figure className="banner--fig">
-      <img src={source} className="banner--img" />
-    </figure>
+    <img src={source} className="banner--img" />
   );
 };
 
@@ -56,20 +54,68 @@ const Details = ({ details }) => {
   );
 };
 
-const Banner = ({ imgs, ArtistDetails }) => {
-  if (imgs[0]) {
+class Banner extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      imgloaded: false,
+      figDisplay: 'none'
+    }
+    this.lazyLoadImg = this.lazyLoadImg.bind(this);
+  }
+
+
+  lazyLoadImg (url) {
+    const img = new Image();
+    img.src = `${url}`;
+    img.onload = () => {
+      this.setState(prevState => {
+        return {
+          imgloaded: true,
+          figDisplay: 'block'
+        }
+      })
+    }
+
+    if (this.state.imgloaded && this.state.figDisplay === 'block') {
+      return (
+        <ImgFrame source={url} />
+      )
+    }
+
+    return;
+  }
+
+  componentDidMount() {
+    this.setState(prevState => {
+      return {
+        imgloaded: false,
+        figDisplay: 'none'
+      }
+    })
+  }
+
+  render() {
+    let ArtistDetails = this.props.ArtistDetails
+    if (this.props.imgs[1]) {
+      let imgs = this.props.imgs
+      return (
+        <div className="banner">
+          <figure className="banner--fig" id="banner--fig" style={{
+              display: this.state.figDisplay
+            }}>
+            {this.lazyLoadImg(`${imgs[1].url}`)}
+          </figure>
+          <Details details={ArtistDetails} />
+        </div>
+      );
+    }
     return (
       <div className="banner">
-        <ImgFrame source={`${imgs[0].url}`} />
         <Details details={ArtistDetails} />
       </div>
-    );
+    )
   }
-  return (
-    <div className="banner">
-      <Details details={ArtistDetails} />
-    </div>
-  )
-};
+}
 
 export default Banner;
