@@ -4,6 +4,18 @@
   grid-column: 1 / 30;
   border-radius: 0.3rem;
 
+  @media only screen and (max-width: 58em) {
+    grid-column: 1 / 57;
+  }
+
+  @media only screen and (max-width: 48.375em) {
+    /* grid-column: 1 / 61; */
+   //width: 70.7rem;
+   //transform: translateX(-15rem);
+   /* display: none; */
+   /* width: 100%; */
+  }
+
   &::before {
     position: absolute;
     top: 0;

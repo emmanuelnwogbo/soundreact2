@@ -16,21 +16,15 @@ class SearchBar extends React.Component {
 
   focus() {
     window.removeEventListener("keypress", Global.pausePlayMusic, false);
-    if (window.matchMedia("(max-width: 1024px)").matches) {
-      document.getElementById("app--name").style.display = `none`;
-    }
-    document.getElementById(
-      "searchbar"
-    ).style.transform = `translateX(24rem) translateY(-11rem)`;
+    document.getElementById("app--name").style.display = `none`;
     document.getElementById("cards").style.display = `grid`;
     document.getElementById("cards").style.position = `relative`;
     document.getElementById("cards").style.zIndex = `1000`;
     document.getElementById("searchbar").style.position = `fixed`;
-    document.getElementById("app--name").style.top = `3%`;
-    document.getElementById("app--name").style.left = `3%`;
-    document.getElementById("app--name").style.fontSize = `2.5rem`;
-    document.getElementById("app__name--svg").style.height = `4.5rem`;
-    document.getElementById("app__name--svg").style.width = `4.5rem`;
+    document.getElementById("searchbar").style.transform = `translateY(-10rem)`;
+    document.getElementById(
+      "searchbar--checkbox"
+    ).checked = true;
     this.setState(
       prevState => {
         return {
@@ -118,6 +112,7 @@ class SearchBar extends React.Component {
   render() {
     return (
       <div className="searchbar" id="searchbar">
+        <input className="searchbar--checkbox" id="searchbar--checkbox" type="checkbox"/>
         <input
           className="searchbar--input"
           type="text"

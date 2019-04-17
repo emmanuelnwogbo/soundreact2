@@ -1,18 +1,34 @@
 .searchbar {
   margin: 0 auto;
-  width: 140.5rem;
+  width: 100%;
   padding: 1.5rem;
   background: transparent;
   transform: translateY(20rem);
   z-index: 3000;
+  position: relative;
+
+  &--checkbox {
+    position: absolute;
+    top: 0;
+    display: none;
+    z-index: -1;
+  }
+
+  &--checkbox:checked ~ &--input {
+    width: 70%;
+    transform: translateX(-5rem);
+
+  }
 
   &--input {
+    margin: 0 auto;
+    display: block;
     font-size: 2.5rem;
     font-family: inherit;
     font-weight: 700;
     color: #000000;
     height: 6rem;
-    width: 100%;
+    width: 60%;
     outline: none;
     padding: 1.5rem 2rem;
     border-radius: 5px;

@@ -29,6 +29,9 @@ class Cards extends React.Component {
   }
 
   renderTrackCards() {
+    if (window.matchMedia("(max-width: 851px)").matches) {
+      return;
+    }
     if (this.props.topTracks) {
       return this.props.topTracks.map(track => {
         if (this.props.topTracks.indexOf(track) < 2) {
@@ -46,6 +49,20 @@ class Cards extends React.Component {
   }
 
   renderOtherCards() {
+    if (window.matchMedia("(max-width: 851px)").matches) {
+      console.log('test')
+      if (this.props.topTracks) {
+        return this.props.topTracks.map(track => {
+            return (
+              <TrackCard
+                classes={"trackcard othercards--trackcard"}
+                key={track.id}
+                track={track}
+              />
+            );
+        });
+      }
+    }
     if (this.props.topTracks) {
       return this.props.topTracks.map(track => {
         if (this.props.topTracks.indexOf(track) > 1) {
