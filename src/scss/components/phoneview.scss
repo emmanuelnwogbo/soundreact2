@@ -4,6 +4,9 @@
   flex-direction: column;
   margin: 0 auto;
   width: 66vw;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
 
   & > div {
     margin: .5rem 0;

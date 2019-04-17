@@ -47,7 +47,8 @@ body {
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
-
+  background: red;
+  
   @media only screen and (max-width: 28.875em) {
     width: 85vw;
     transform: translateY(5rem);
