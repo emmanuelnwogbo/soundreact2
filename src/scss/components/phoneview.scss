@@ -1,0 +1,21 @@
+.phoneview {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 66vw;
+
+  & > div {
+    margin: .5rem 0;
+  }
+
+  @media only screen and (max-width: 28.875em) {
+    width: 85vw;
+    transform: translateY(5rem);
+  }
+
+  @media only screen and (max-width: 20.813em) {
+    width: 96vw;
+    transform: translateY(8.5rem)
+  }
+}

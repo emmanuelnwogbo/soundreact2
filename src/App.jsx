@@ -63,7 +63,7 @@ class App extends React.Component {
             height: "9vh",
             background: "#000000",
             position: "fixed",
-            zIndex: "3000",
+            zIndex: "9900",
             top: "0",
             left: "0"
           }}
@@ -83,6 +83,12 @@ class App extends React.Component {
           </div>
         </div>
         <div className="app--name" id="app--name">
+          <p>SoundReact</p>
+          <svg className="app__name--svg" id="app__name--svg">
+            <use xlinkHref="./img/sprite.svg#icon-react" />
+          </svg>
+        </div>
+        <div className="app--name-phone" id="app--name-phone">
           <p>SoundReact</p>
           <svg className="app__name--svg" id="app__name--svg">
             <use xlinkHref="./img/sprite.svg#icon-react" />

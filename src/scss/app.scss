@@ -10,6 +10,30 @@
     opacity: 0.8;
     z-index: 3000;
 
+    @media only screen and (max-width: 39.375em) {
+      display: none;
+    }
+
+    & > * {
+      display: inline;
+    }
+  }
+
+  &--name-phone {
+    color: #fff;
+    position: relative;
+    text-align: center;
+    font-size: 4rem;
+    cursor: pointer;
+    opacity: 0.8;
+    z-index: 3000;
+    transform: translateY(21rem);
+    display: none;
+
+    @media only screen and (max-width: 39.375em) {
+      display: block;
+    }
+
     & > * {
       display: inline;
     }

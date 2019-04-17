@@ -16,15 +16,23 @@ class SearchBar extends React.Component {
 
   focus() {
     window.removeEventListener("keypress", Global.pausePlayMusic, false);
+    document.getElementById("app--name-phone").style.display = `none`;
     document.getElementById("app--name").style.display = `none`;
-    document.getElementById("cards").style.display = `grid`;
-    document.getElementById("cards").style.position = `relative`;
-    document.getElementById("cards").style.zIndex = `1000`;
-    document.getElementById("searchbar").style.position = `fixed`;
-    document.getElementById("searchbar").style.transform = `translateY(-10rem)`;
-    document.getElementById(
-      "searchbar--checkbox"
-    ).checked = true;
+    if (!window.matchMedia("(max-width: 630px)").matches) {
+      document.getElementById("cards").style.display = `grid`;
+      document.getElementById("cards").style.position = `relative`;
+      document.getElementById("cards").style.zIndex = `1000`;
+      document.getElementById("searchbar").style.position = `fixed`;
+      document.getElementById("searchbar").style.transform = `translateY(-10rem)`;
+      document.getElementById(
+        "searchbar--checkbox"
+      ).checked = true;
+    }
+    else {
+      document.getElementById("searchbar").style.position = `fixed`;
+      document.getElementById("searchbar").style.top = `0`;
+      document.getElementById("searchbar").style.transform = `translateY(-.3rem)`
+    }
     this.setState(
       prevState => {
         return {

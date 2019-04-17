@@ -45,5 +45,17 @@
     &:nth-child(8) {
       @include trackCardBackground(rgba(255, 204, 204, 1));
     }
+
+    &:nth-child(9) {
+      @include trackCardBackground(rgba(255, 204, 204, 1));
+    }
+
+    &:nth-child(10) {
+      @include trackCardBackground(rgba(255, 204, 204, 1));
+    }
+
+    &:nth-child(11) {
+      @include trackCardBackground(rgba(255, 204, 204, 1));
+    }
   }
 }

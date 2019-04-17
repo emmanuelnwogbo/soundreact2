@@ -26,6 +26,18 @@ html {
   @media only screen and (max-width: 71em) {
     font-size: 35%;
   }
+
+  @media only screen and (max-width: 37.438em) {
+    font-size: 45%;
+  }
+
+  @media only screen and (max-width: 28.875em) {
+    font-size: 49%
+  }
+
+  @media only screen and (max-width: 20.75em) {
+    font-size: 37%
+  }
 }
 
 body {
@@ -35,6 +47,20 @@ body {
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
+
+  @media only screen and (max-width: 28.875em) {
+    width: 85vw;
+    transform: translateY(5rem);
+    &::before {
+      position: absolute;
+      left: 0;
+      bottom: -2%;
+      height: 4%;
+      width: 100vw;
+      background: #000000;
+      content: '';
+    }
+  }
 }
 
 .link {

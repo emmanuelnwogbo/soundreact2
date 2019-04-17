@@ -14,6 +14,21 @@ class Cards extends React.Component {
     this.renderTrackCards = this.renderTrackCards.bind(this);
     this.renderOtherCards = this.renderOtherCards.bind(this);
     this.populateCard = this.populateCard.bind(this);
+    this.renderPhoneViewTracks = this.renderPhoneViewTracks.bind(this)
+  }
+
+  renderPhoneViewTracks() {
+    if (this.props.topTracks) {
+      return this.props.topTracks.map(track => {
+          return (
+            <TrackCard
+              classes={"trackcard othercards--trackcard"}
+              key={track.id}
+              track={track}
+            />
+          );
+      });
+    }
   }
 
   renderSideImages() {
@@ -79,6 +94,14 @@ class Cards extends React.Component {
   }
 
   populateCard() {
+    if (!this.props.searchTriggered && window.matchMedia("(max-width: 630px)").matches) {
+      return (
+        <div className="phoneview" id="phoneview">
+          {this.renderSideImages()}
+          {this.renderPhoneViewTracks()}
+        </div>
+      )
+    }
     if (!this.props.searchTriggered) {
       return (
         <div className="cards" id="cards">
